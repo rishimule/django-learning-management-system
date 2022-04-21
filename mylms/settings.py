@@ -25,18 +25,20 @@ SECRET_KEY = 'django-insecure-%tn=cmyc4r(y&&h*s^im0*2ymp3wls=+%galyup3mx1vt&kzpo
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 
 # Application definition
 
 INSTALLED_APPS = [
+    
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'storages',
     'accounts',
     'bootstrap4',
     'students',
@@ -122,7 +124,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.2/howto/static-files/
 
 STATIC_URL = '/static/'
-STATIC_FILES_DIRS = [BASE_DIR / 'mylms/static']
+STATIC_FILES_DIRS = [BASE_DIR / 'mylms/lmsstatic']
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
@@ -138,3 +140,15 @@ LOGIN_REDIRECT_URL = "/dashboard/"
 LOGIN_URL = '/accounts/login/'
 
 LOGOUT_REDIRECT_URL = '/'
+
+
+DEFAULT_FILE_STORAGE = 'mylms.custom_azure.AzureMediaStorage'
+STATICFILES_STORAGE = 'mylms.custom_azure.AzureStaticStorage'
+
+STATIC_LOCATION = "static"
+MEDIA_LOCATION = "media"
+
+AZURE_ACCOUNT_NAME = "lmsdjangoaccountstorage"
+AZURE_CUSTOM_DOMAIN = f'{AZURE_ACCOUNT_NAME}.blob.core.windows.net'
+STATIC_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{STATIC_LOCATION}/'
+MEDIA_URL = f'https://{AZURE_CUSTOM_DOMAIN}/{MEDIA_LOCATION}/'
