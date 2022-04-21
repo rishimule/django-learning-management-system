@@ -1,0 +1,31 @@
+{% extends 'accounts/base.html' %}
+
+<!-- Title Block -->
+{% block title %}Sign Up{% endblock title %}
+
+<!-- Body Content Block -->
+{% block content %}
+
+<div class="jumbotron  my-auto">
+    <h1 class="display-3">Select Your Stream</h1>
+    <hr class="my-2">
+
+    <div class="col-lg-10 mx-auto">
+
+        <!-- For Loop -->
+        {% for stream in stream_list %}
+
+        <a class="btn btn-success" style=" margin: 1em;" href="{% url 'accounts:teacher_signup' stream.pk %}" role="button">
+            {{stream.name}}
+        </a>
+
+        <!-- End For -->
+        {% endfor %}
+
+    </div>
+</div>
+
+
+
+<!-- End Block -->
+{% endblock content %}

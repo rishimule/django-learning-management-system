@@ -1,0 +1,14 @@
+{% extends 'teachers/base.html' %} {% load static %} {% block title %}Delete Resource{% endblock title %} {% block content %}
+
+<div class="jumbotron">
+    <h1 class="display-3">Confirm Delete?</h1>
+    <p class="lead">This action is irreversible</p>
+    <hr class="my-2">
+    <p>Do you want to Delete this Resource</p>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %} {{form.as_p}}
+        <button type="submit" class="form-button btn btn-danger">Submit</button>
+    </form>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,12 @@
+{% extends 'teachers/base.html' %} {% load static %} {% load bootstrap4 %} {% block title %}Add Section{% endblock title %} {% bootstrap_messages %} {% block content %}
+
+<h1>Add Section</h1>
+<hr>
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %} {% bootstrap_form form%}
+    <button type="submit" class="form-button btn btn-success">Confirm</button>
+    </div>
+    </div>
+</form>
+
+{% endblock content %}

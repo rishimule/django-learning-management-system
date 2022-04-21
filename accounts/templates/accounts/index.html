@@ -1,0 +1,21 @@
+{% extends 'accounts/base.html' %} {% block title %}Sign Up{% endblock title %} {% block content %}
+<div class="container">
+    <div class="jumbotron">
+        <br><br><br>
+        <h1 class="display-3">Sign Up!</h1>
+        <br>
+        <p class="lead">Create a account!</p>
+        <br>
+        <hr class="my-2">
+        <br>
+        <p>Choose your role.</p>
+        <br>
+        <p class="lead">
+            <a class="btn btn-success btn-lg" href="{% url 'accounts:student_stream' %}" role="button">I'm a Student!</a>
+
+            <a class="btn btn-primary btn-lg" href="{% url 'accounts:teacher_stream' %}" role="button">I'm a Teacher!</a>
+        </p>
+    </div>
+</div>
+
+{% endblock content %}

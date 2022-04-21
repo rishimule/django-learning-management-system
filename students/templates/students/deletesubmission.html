@@ -1,0 +1,20 @@
+{% extends 'students/base.html' %}
+
+<!-- Load Static -->
+{% load static %}
+
+<!-- Title Heading -->
+{% block title %}Resources{% endblock title %}
+
+<!-- Start Content Block -->
+{% block content %}
+
+<div class="container-fluid">
+
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %} {{form}}
+        <button type="submit" class="form-button btn btn-danger">Submit</button>
+    </form>
+
+</div>
+{% endblock content %}

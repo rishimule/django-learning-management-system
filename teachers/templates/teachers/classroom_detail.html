@@ -1,0 +1,46 @@
+{% extends 'teachers/base.html' %} {% load static %} {% block title %}Classroom Detail{% endblock title %} {% block content %}
+
+<div class="container-fluid">
+    <h1 style="font-weight: bold;">{{ classroom.subject|upper }}</h1>
+    <!-- Start: break 4.0 --><br>
+    <!-- End: break 4.0 -->
+    <div>
+        <!-- Start: Split Button Warning -->
+        <a class="btn btn-warning btn-icon-split" role="button" href="{% url 'teachers:add_section' code=classroom.code %}"><span class="text-white-50 icon"><i
+                    class="fas fa-plus"></i></span><span class="text-white text">Add Section</span></a>
+        <!-- End: Split Button Warning -->
+    </div>
+    <!-- Start: break 4.0 --><br>
+    <!-- End: break 4.0 -->
+    <!-- Start: Duplicate me -->
+    {% for section in classroom.sections.all %}
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="text-secondary m-0 font-weight-bold">{{section.title}}</h6>
+        </div>
+        <div class="card-body">
+            <div class="row">
+                <div class="col">
+                    <!-- Start: Split Button Success --><a class="btn btn-success btn-icon-split" role="button" style="margin: 5px;" href="{% url 'teachers:resources' pk=section.pk %}"><span class="text-white-50 icon"><i
+                                class="far fa-calendar-check"></i></span><span
+                            class="text-white text">Resources</span></a>
+                    <!-- End: Split Button Success -->
+                    <!-- Start: Split Button Success --><a class="btn btn-info btn-icon-split" role="button" style="margin: 5px;" href="{% url 'teachers:assignments' pk=section.pk %}"><span class="text-white-50 icon"><i
+                                class="far fa-calendar-plus"></i></span><span
+                            class="text-white text">Assignments</span></a>
+                    <!-- End: Split Button Success -->
+                </div>
+                <div class="col text-right">
+                    <!-- Start: Split Button Success --><a class="btn btn-danger btn-icon-split" role="button" style="margin: 5px;" href="{% url 'teachers:delete_section' pk=section.pk %}"><span class="text-white-50 icon"><i
+                                class="far fa-calendar-check"></i></span><span class="text-white text">Delete</span></a>
+                    <!-- End: Split Button Success -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End: Duplicate me -->
+    {% endfor %}
+</div>
+
+
+{% endblock content %}

@@ -1,0 +1,50 @@
+{% extends 'teachers/base.html' %} {% load static %} {% block title %}Resources{% endblock title %} {% block content %}
+
+<div class="container-fluid">
+    <h1>Resources</h1>
+    <div>
+        <!-- Start: Split Button Warning --><a class="btn btn-warning btn-icon-split" role="button" href="{% url 'teachers:add_resource' pk=section.pk %}"><span class="text-white-50 icon"><i class="fas fa-plus"></i></span><span class="text-white text">Add Resources</span></a>
+        <!-- End: Split Button Warning -->
+    </div>
+    <!-- Start: break 4.0 --><br>
+    <!-- End: break 4.0 -->
+    <!-- Start: Duplicate me -->
+    {% for resource in section.resources.all|dictsortreversed:"created_timestamp" %}
+    <div>
+        <!-- Start: Collapsible Card -->
+
+        <div class="shadow card"><a class="btn btn-link text-left card-header font-weight-bold" data-toggle="collapse" aria-expanded="true" aria-controls="collapse-4-{{resource.pk|slugify}}" href="#collapse-4-{{resource.pk|slugify}}" role="button">{{resource.title}}</a>
+            <div class="collapse" id="collapse-4-{{resource.pk|slugify}}">
+                <div class="card-body">
+                    <h1 style="font-size: 14px;font-weight: bold;">{{resource.created_timestamp|date:"M d, Y"}}</h1>
+                    <hr>
+                    <p class="m-0">{{resource.text|linebreaksbr}}</p>
+                    <!-- Start: break 4.0 --><br>
+                    <!-- End: break 4.0 -->
+                    <div class="row">
+                        {% if resource.file %}
+                        <div class="col">
+                            <!-- Start: Split Button Success --><a class="btn btn-success btn-icon-split" role="button" href="{{resource.file.url}}" download><span class="text-white-50 icon"><i class="fas fa-arrow-circle-down"></i></span><span class="text-white text">Download Resource</span></a>
+                            <!-- End: Split Button Success -->
+                        </div>
+                        {% endif %}
+                        <div class="col text-right">
+                            <!-- Start: Split Button Success --><a class="btn btn-danger btn-icon-split" role="button" href="{% url 'teachers:delete_resource' pk=resource.pk %}"><span class="text-white-50 icon"><svg xmlns="http://www.w3.org/2000/svg" width="1em" height="1em" fill="currentColor" viewBox="0 0 16 16" class="bi bi-trash-fill">
+                                        <path d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 1 0z"></path>
+                                    </svg></span><span class="text-white text">Delete</span></a>
+                            <!-- End: Split Button Success -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- End: Collapsible Card -->
+        <!-- Start: break 4.0 --><br>
+        <!-- End: break 4.0 -->
+    </div>
+    <!-- End: Duplicate me -->
+    {% endfor %}
+</div>
+
+
+{% endblock content %}

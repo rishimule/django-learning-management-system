@@ -1,0 +1,32 @@
+{% extends 'students/base.html' %}
+
+<!-- Title Heading -->
+{% block title %}Classroom Detail{% endblock title %}
+
+<!-- Start Content Block -->
+{% block content %}
+
+<div class="container-fluid">
+    <h1 style="font-weight: bold;">{{ classroom.subject|upper }}</h1>
+    <!-- Start: break 4.0 --><br>
+    <!-- End: break 4.0 -->
+    <!-- Start: Duplicate me -->
+    {% for section in classroom.sections.all %}
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="text-secondary m-0 font-weight-bold">{{section.title}}</h6>
+        </div>
+        <div class="card-body">
+            <!-- Start: Split Button Success -->
+            <a class="btn btn-success btn-icon-split" role="button" style="margin: 5px;" href="{% url 'students:resources' pk=section.pk %}"><span class="text-white-50 icon"><i class="far fa-calendar-check"></i></span><span class="text-white text">Resources</span></a>
+            <!-- End: Split Button Success -->
+            <!-- Start: Split Button Danger -->
+            <a class="btn btn-danger btn-icon-split" role="button" style="margin: 5px;" href="{% url 'students:assignments' pk=section.pk %}"><span class="text-white-50 icon"><i class="far fa-file-archive"></i></span><span class="text-white text">Assignments</span></a>
+            <!-- End: Split Button Danger -->
+        </div>
+    </div>
+    {% endfor %}
+    <!-- End: Duplicate me -->
+</div>
+
+{% endblock content %}

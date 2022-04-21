@@ -1,0 +1,73 @@
+{% extends 'students/base.html' %}
+
+<!-- Load Static -->
+{% load static %}
+
+<!-- Title Heading -->
+{% block title %}Resources{% endblock title %}
+
+<!-- Start Content Block -->
+{% block content %}
+
+<div class="container-fluid">
+    <!-- Start: Basic Card -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="text-primary m-0 font-weight-bold">{{assignment.title}}</h6>
+        </div>
+        <div class="card-body">
+            <div class="alert alert-danger alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <span>
+                    <strong>Deadline : {{assignment.deadline|date:"M d, Y"}}</strong>
+                </span>
+            </div>
+
+            <!-- Start: Else Loop -->
+            <div>
+                <div class="alert alert-success" role="alert">
+                    <span>
+                        <strong>Submitted on : {{submission.submission_timestamp|date:"M d, Y"}}</strong>
+                        <br>
+                    </span>
+                </div>
+                <div class="row">
+                    <div class="col">
+                        <input class="form-control-lg form-control-user" type="text" id="exampleFirstName-1" placeholder="File Name" name="first_name" value="{{assignmentfilename}}" disabled="" readonly="" style="padding: 16px 16px;margin: 10px;width: 100%;">
+                    </div>
+                    <div class="col align-self-center">
+                        <div class="row">
+                            <div class="col-auto">
+                                <!-- Start: Split Button Success -->
+                                <a class="btn btn-success btn-lg btn-icon-split" role="button" href="{{submission.file.url}}" download>
+                                    <span class="text-white-50 icon">
+                                        <i class="fas fa-download"></i>
+                                    </span>
+                                    <span class="text-white text">Download</span>
+                                </a>
+                                <!-- End: Split Button Success -->
+                            </div>
+                            <div class="col">
+                                <!-- Start: Split Button Danger -->
+                                <a class="btn btn-danger btn-lg btn-icon-split" role="button" href="{% url 'students:delete_submission' pk=submission.pk %}">
+                                    <span class="text-white-50 icon">
+                                        <i class="fas fa-trash"></i>
+                                    </span>
+                                    <span class="text-white text">Delete</span>
+                                </a>
+                                <!-- End: Split Button Danger -->
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- End: Else Loop -->
+        </div>
+    </div>
+    <!-- End: Basic Card -->
+</div>
+
+
+{% endblock content %}

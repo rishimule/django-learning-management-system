@@ -1,0 +1,40 @@
+{% extends 'teachers/base.html' %} {% block title %}Dashboard{% endblock title %} {% block content %}
+
+<div class="container-fluid">
+    <h1>Classrooms</h1>
+    <!-- Start: break 4.0 --><br>
+    <!-- End: break 4.0 -->
+    <!-- Start: Dropdown Card -->
+    {% for classrom in user.teachers.classrooms.all %}
+    <div class="card shadow mb-4">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h6 class="text-primary m-0 font-weight-bold">{{ classrom.subject }}</h6>
+            <div class="dropdown no-arrow"><button class="btn btn-link btn-sm dropdown-toggle" aria-expanded="false" data-toggle="dropdown" type="button"><i class="fas fa-ellipsis-v text-gray-400"></i></button>
+                <div class="dropdown-menu shadow dropdown-menu-right animated--fade-in"><a class="dropdown-item text-danger" href="{% url 'teachers:delete_classroom' code=classrom.code %}">Delete Classroom</a></div>
+            </div>
+        </div>
+        <div class="card-body">
+            <p class="m-0">Classroom code : {{ classrom.code }}<br></p>
+            <!-- Start: break 4.0 --><br>
+            <!-- End: break 4.0 -->
+            <div class="row">
+                <div class="col">
+                    <!-- Start: Split Button Primary --><a class="btn btn-primary btn-icon-split" role="button" href="{% url 'teachers:classroom_detail' code=classrom.code %}"><span
+                            class="text-white-50 icon"><i class="far fa-folder"></i></span><span
+                            class="text-white text">Manage</span></a>
+                    <!-- End: Split Button Primary -->
+                </div>
+                <div class="col text-right">
+                    <!-- Start: Split Button Primary --><a class="btn btn-warning btn-icon-split" role="button" href="{% url 'teachers:classroom_students' code=classrom.code %}"><span
+                            class="text-white-50 icon"><i class="far fa-user"></i></span><span
+                            class="text-white text">Students</span></a>
+                    <!-- End: Split Button Primary -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End: Dropdown Card -->
+    {% endfor %}
+</div>
+
+{% endblock content %}

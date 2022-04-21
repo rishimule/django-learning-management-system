@@ -1,0 +1,81 @@
+<!DOCTYPE html> {% load static %} {% load bootstrap4 %} {% bootstrap_messages %}
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no" />
+    <title>Register - Teacher</title>
+    <link rel="stylesheet" href="{% static 'accounts/bootstrap/css/bootstrap.min.css' %}" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" />
+</head>
+
+<body class="bg-gradient-primary">
+    <div class="container">
+        <div class="card shadow-lg o-hidden border-0 my-5">
+            <div class="card-body p-0">
+                <div class="row justify-content-center">
+                    <div class="col-lg-7">
+                        <div class="p-5">
+                            <div class="text-center">
+                                <h4 class="text-dark mb-4">Create an Teacher Account!</h4>
+                            </div>
+                            <form class="user" method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">{{form.first_name}}</div>
+                                    <div class="col-sm-6">{{form.last_name}}</div>
+                                </div>
+                                <div class="form-group">{{form.email}}</div>
+                                <div class="form-group">{{form.username}}</div>
+                                <div class="form-group row">
+                                    <div class="col-sm-6 mb-3 mb-sm-0">{{form.password1}}</div>
+                                    <div class="col-sm-6">{{form.password2}}</div>
+                                </div>
+                                {{form.username.errors}} {{form.password1.errors}} {{form.password2.errors}} {{ form.non_field_errors }}
+
+                                <button class="btn btn-primary btn-block text-white btn-user" type="submit">
+                    Register Account
+                  </button>
+                                <hr />
+                            </form>
+                            <div class="text-center">
+                                <a class="small" href="#">Forgot Password?</a
+                  >
+                </div>
+                <div class="text-center">
+                  <a class="small" href="{% url 'accounts:login' %}"
+                    >Already have an account? Login!</a
+                  >
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.6.1/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="{% static 'accounts/js/theme.js' %}"></script>
+    <script>
+      var form_fields = document.getElementsByTagName("input");
+      form_fields[1].placeholder = "First Name";
+      form_fields[1].className += " form-control form-control-user";
+
+      form_fields[2].placeholder = "Last Name";
+      form_fields[2].className += " form-control form-control-user";
+
+      form_fields[3].placeholder = "Email Address";
+      form_fields[3].className += " form-control form-control-user";
+
+      form_fields[4].placeholder = "Username";
+      form_fields[4].className += " form-control form-control-user";
+
+      form_fields[5].placeholder = "Password";
+      form_fields[5].className += " form-control form-control-user";
+
+      form_fields[6].placeholder = "Repeat Password";
+      form_fields[6].className += " form-control form-control-user";
+    </script>
+  </body>
+</html>

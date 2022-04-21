@@ -1,0 +1,50 @@
+{% extends 'students/base.html' %}
+
+<!-- Load Static -->
+{% load static %}
+
+<!-- Title Heading -->
+{% block title %}Resources{% endblock title %}
+
+<!-- Start Content Block -->
+{% block content %}
+
+<div class="container">
+    <!-- Start: Forgotten Password Form -->
+    <div class="card shadow-lg o-hidden border-0 my-5">
+        <div class="card-body p-0">
+            <div class="row justify-content-center">
+                <div class="col-lg-6" style="height: 520px;width: 718.5px;">
+                    <div class="p-5" style="text-align: center;">
+                        <div class="text-center">
+                            <h4 class="text-dark mb-2">Class code<br></h4>
+                            <p class="mb-4">Ask your teacher for the class code , then enter it here !<br></p>
+                        </div>
+                        <form class="user" method="post" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-group">{{form.code}}</div>
+                            <button class="btn btn-primary d-block btn-user w-100" type="submit">Join Class</button>
+                        </form>
+                        <div class="text-center"></div>
+                        <div class="text-center"></div>
+                    </div>
+                    <p class="mb-4" style="width: 524.5px;">To sign in with a class code&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Use an authorized account&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;Use a class code with 5-7 letters or numbers, and no
+                        spaces or&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;symbols.&nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+                        &nbsp;If you have trouble joining the class, go to the Help.<br><br></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- End: Forgotten Password Form -->
+</div>
+
+<script>
+    var codefield = document.getElementById('id_code');
+    codefield.placeholder = "Classroom Code";
+    codefield.className += " form-control form-control-user";
+</script>
+
+{% endblock content %}

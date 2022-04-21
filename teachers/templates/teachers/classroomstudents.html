@@ -1,0 +1,42 @@
+{% extends 'teachers/base.html' %} {% load static %} {% block title %}List of Students{% endblock title %} {% block content %}
+
+
+<div class="container-fluid">
+    <h3 class="text-dark mb-4">{{classroom.subject|upper}}</h3>
+    <div class="card shadow">
+        <div class="card-header py-3">
+            <p class="text-primary m-0 font-weight-bold">Student List</p>
+        </div>
+        <div class="card-body">
+            <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                <table class="table my-0" id="dataTable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Student ID</th>
+                            <th>Class</th>
+                            <th>Roll No.</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Start: Duplicate it -->
+                        {% for student in classroom_students %}
+                        <tr>
+                            <td><strong>{{student.user.first_name}} {{student.user.last_name}}</strong></td>
+                            <td>{{student.student_id}}</td>
+                            <td>{{student.current_class}}</td>
+                            <td>{{student.roll_no}}</td>
+                        </tr>
+                        {% endfor %}
+                        <!-- End: Duplicate it -->
+                    </tbody>
+                    <tfoot>
+                        <tr></tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

@@ -1,0 +1,47 @@
+{% extends 'students/base.html' %}
+
+<!-- Title Heading -->
+{% block title %}Student Dashboard{% endblock title %}
+
+<!-- Start Content Block -->
+{% block content %}
+
+<div class="container-fluid">
+    <h1>Classrooms</h1>
+    <!-- Start: break 4.0 --><br />
+    <!-- End: break 4.0 -->
+    <!-- Start: Dropdown Card -->
+    {% for classroom in user.students.classrooms.all %}
+    <div class="card shadow mb-4">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <h6 class="text-primary m-0 font-weight-bold">
+                {{ classroom.subject|upper }}
+            </h6>
+            <div class="dropdown no-arrow">
+                <button class="btn btn-link btn-sm dropdown-toggle" aria-expanded="false" data-toggle="dropdown" type="button">
+                    <i class="fas fa-ellipsis-v text-gray-400"></i>
+                </button>
+                <div class="dropdown-menu shadow dropdown-menu-right animated--fade-in">
+                    <a class="dropdown-item text-danger" href="{% url 'students:leave_classroom' code=classroom.code %}">&nbsp;Leave</a>
+                </div>
+            </div>
+        </div>
+        <div class="card-body">
+            <p class="m-0">Classroom code : {{ classroom.code }}<br /></p>
+            <!-- Start: break 4.0 --><br />
+            <!-- End: break 4.0 -->
+            <!-- Start: Split Button Primary -->
+            <a class="btn btn-primary btn-icon-split" role="button" href="{% url 'students:classroom_detail' code=classroom.code %}">
+                <span class="text-white-50 icon">
+                    <i class="far fa-folder"></i>
+                </span>
+                <span class="text-white text">Manage</span></a>
+            <!-- End: Split Button Primary -->
+        </div>
+    </div>
+    {% endfor %}
+    <!-- End: Dropdown Card -->
+</div>
+
+<!-- End Content Block -->
+{% endblock content %}

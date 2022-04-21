@@ -1,0 +1,47 @@
+{% extends 'teachers/base.html' %} {% load static %} {% block title %}Submissions{% endblock title %} {% block content %}
+
+
+<div class="container-fluid">
+    <h3 class="text-dark mb-4">Assignment Submissions</h3>
+    <div class="card shadow">
+        <div class="card-header py-3">
+            <p class="text-primary m-0 font-weight-bold">{{assignment.title}}</p>
+        </div>
+        <div class="card-body">
+            <div class="alert alert-info" role="alert"><span><strong>Deadline : {{assignment.deadline|date:"M d, Y"}}</strong></span></div>
+            <div class="table-responsive table mt-2" id="dataTable" role="grid" aria-describedby="dataTable_info">
+                <table class="table my-0" id="dataTable">
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Student ID</th>
+                            <th>Class</th>
+                            <th>Roll No.</th>
+                            <th>Submission date</th>
+                            <th>Download File</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Start: Duplicate it -->
+                        {% for submission in assignment_submissions %}
+                        <tr>
+                            <td><strong>{{submission.student.user.first_name}} {{submission.student.user.last_name}}</strong></td>
+                            <td>{{submission.student.student_id}}</td>
+                            <td>{{submission.student.current_class}}</td>
+                            <td>{{submission.student.roll_no}}</td>
+                            <td><strong>{{submission.submission_timestamp|date:"d/m/Y"}}</strong> {{submission.submission_timestamp|date:"h:i A"}}</td>
+                            <td><a class="btn btn-success text-center btn-icon-split" role="button" href="{{submission.file.url}}" download><span class="text-white-50 icon"><i class="fas fa-cloud-download-alt"></i></span><span class="text-white text">Download&nbsp;</span></a></td>
+                        </tr>
+                        {% endfor %}
+                        <!-- End: Duplicate it -->
+                    </tbody>
+                    <tfoot>
+                        <tr></tr>
+                    </tfoot>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock content %}

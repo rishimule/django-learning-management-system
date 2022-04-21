@@ -1,0 +1,72 @@
+{% extends 'students/base.html' %}
+
+<!-- Load Static -->
+{% load static %}
+
+<!-- Title Heading -->
+{% block title %}Resources{% endblock title %}
+
+<!-- Start Content Block -->
+{% block content %}
+
+<div class="container-fluid">
+    <!-- Start: Basic Card -->
+    <div class="card shadow mb-4">
+        <div class="card-header py-3">
+            <h6 class="text-primary m-0 font-weight-bold">Assignment Title</h6>
+        </div>
+        <div class="card-body">
+            <div class="alert alert-danger alert-dismissible" role="alert"><button type="button" class="close" data-dismiss="alert" aria-label="Close"><span
+                        aria-hidden="true">×</span></button><span><strong>Deadline : 25 April, 2022</strong></span>
+            </div>
+            <!-- Start: if loop -->
+            <div>
+                <!-- Start: Forgotten Password Form -->
+                <div class="card shadow-lg o-hidden border-0 my-5">
+                    <div class="card-body p-0">
+                        <div class="row justify-content-center">
+                            <div class="col-lg-6">
+                                <div class="p-5">
+                                    <div class="text-center">
+                                        <h4 class="text-dark mb-2">Upload your File....</h4>
+                                    </div>
+                                    <form class="user" method="post" enctype="multipart/form-data">
+                                        {% csrf_token %}
+                                        <div class="form-group">
+                                            <div class="custom-file">
+                                                {{form.file}}
+
+                                                <label class="custom-file-label" for="customFile">Choose file</label>
+                                            </div>
+                                        </div>
+                                        <button class="btn btn-primary btn-block text-white btn-user" type="submit">Submit</button>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End: Forgotten Password Form -->
+            </div>
+            <!-- End: if loop -->
+        </div>
+    </div>
+    <!-- End: Basic Card -->
+</div>
+
+<script>
+    document.getElementById('id_file').className += " custom-file-input";
+</script>
+
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+<script>
+    // Add the following code if you want the name of the file appear on select
+    $(".custom-file-input").on("change", function() {
+        var fileName = $(this).val().split("\\").pop();
+        $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
+    });
+</script>
+
+
+{% endblock content %}
