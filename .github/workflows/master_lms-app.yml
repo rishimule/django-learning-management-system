@@ -60,4 +60,4 @@ jobs:
         with:
           app-name: 'lms-app'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_402F164BB642487EB95A2E8967D1D2BA }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_42E0E845E61C43DCB8DA10DADAD661C8 }}
