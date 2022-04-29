@@ -52,7 +52,7 @@ $ python manage.py runserver
 
 ## Relation Schema of the database
 
-![ER]('https://raw.githubusercontent.com/radonintro1234/django-learning-management-system/master/screenshots/2022-04-22_11-58-18-957_hwgAvOaf6J.png')
+![ER](https://raw.githubusercontent.com/radonintro1234/django-learning-management-system/master/screenshots/2022-04-22_11-58-18-957_hwgAvOaf6J.png)
 
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
