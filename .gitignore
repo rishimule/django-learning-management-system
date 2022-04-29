@@ -82,3 +82,6 @@ teachers/__pycache__/forms.cpython-39.pyc
 teachers/__pycache__/models.cpython-39.pyc
 teachers/__pycache__/urls.cpython-39.pyc
 teachers/__pycache__/views.cpython-39.pyc
+mylms/.env
+mylms/__pycache__/
+.gitignore
